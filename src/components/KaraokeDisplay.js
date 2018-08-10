@@ -1,13 +1,19 @@
-import React from 'react';
-import Lyrics from './Lyrics';
+import React from "react";
+import Lyrics from "./Lyrics";
 
-const KaraokeDisplay = () => {
+const KaraokeDisplay = ({ showSong, handleLikes, handleDislikes }) => {
   return (
     <div className="karaoke-display">
-      <h2>Song Title</h2>
-      <Lyrics lyrics="example song lyrics" />
+      {showSong ? (
+        <div>
+          <button onClick={handleLikes}>Like</button>
+          <button onClick={handleDislikes}>Dislike</button>
+        </div>
+      ) : null}
+      <h2>{showSong ? showSong.title : ""}</h2>
+      <Lyrics lyrics={showSong ? showSong.lyrics : ""} />
     </div>
-  )
-}
+  );
+};
 
 export default KaraokeDisplay;
